@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mastery.mshop.dao.GoodsDao">	 
+
+	 <select id="selectAll" resultType="com.mastery.mshop.domain.Goods">
+        SELECT * FROM goods;
+    </select>
+
+    <delete id="deleteOne" parameterType="string">
+        DELETE FROM goods WHERE id=#{id};
+    </delete>
+
+    <select id="selectById" parameterType="string" resultType="com.mastery.mshop.domain.Goods">
+        SELECT * FROM goods WHERE id=#{id};
+    </select>
+
+    <update id="updateOne" parameterType="com.mastery.mshop.domain.Goods">
+        UPDATE goods SET title=#{title},price=#{price},num=#{num},barcode=#{barcode} WHERE id=#{id};
+    </update>
+    <insert id="insertOne" parameterType="com.mastery.mshop.domain.Goods">
+        INSERT INTO goods (id,title,price,num,barcode,created) VALUES (#{id},#{title},#{price},#{num},#{barcode},#{created});
+    </insert>
+    
+    <select id="selectGoods" resultType="com.mastery.mshop.domain.Goods">
+        SELECT * FROM goods order by created desc limit #{start},#{limits}
+    </select>
+
+</mapper>

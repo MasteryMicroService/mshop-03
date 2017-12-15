@@ -1,0 +1,471 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" /> 
+    <meta name="format-detection" content="telephone=no" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>订单结算页 -远通商城</title>
+	<!--结算页面样式-->	
+	<link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
+    <link type="text/css" rel="stylesheet"  href="/css/order-commons.css" source="widget"/>	
+	<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+	<script type="text/javascript" src="//js/base.js"></script>	
+	<script type="text/javascript" src="/js/order.common.js"></script>
+	<script type="text/javascript" src="/js/jquery.checkout.js"></script>
+ <script type="text/javascript">
+   function submit(){
+	   location.href="http://localhost:8181/jsp/success.html";
+   } 
+ 
+ </script>
+</head>	<body id="mainframe">
+<jsp:include page="commons/shortcut.jsp" />
+<!--shortcut end-->
+
+<!-- <div class="w w1 header clearfix">
+    <div id="logo"><a href="/"><img src="/images/taotao-logo.gif" alt="远通商城"></a></div>
+</div> -->
+<div id="shortcut-2013">
+	<div class="w">
+		<ul class="fl lh">
+			<li class="fore1 ld" clstag="homepage|keycount|home2013|01a"><b></b><a href="javascript:addToFavorite()" rel="nofollow">收藏远通</a></li>
+		</ul>
+		<ul class="fr lh">
+			<li class="fore1" id="loginbar" clstag="homepage|keycount|home2013|01b">您好！欢迎来到远通！<a href="javascript:login()">[登录]</a>&nbsp;<a href="javascript:regist()">[免费注册]</a></li>
+			<li class="fore2 ld" clstag="homepage|keycount|home2013|01c">
+				<s></s>
+				<a href="/jsp/my-orders.html" rel="nofollow">我的订单</a>
+			</li>
+			<li class="fore2-1 ld" id="jd-vip">
+				<s></s>
+				<a target="_blank" rel="nofollow" href="http://vip.jd.com">会员俱乐部</a>
+			</li>
+			<li class="fore3 ld menu" id="app-jd" data-widget="dropdown" clstag="homepage|keycount|home2013|01d">
+				<s></s><i></i><span class="outline"></span><span class="blank"></span>
+				<a href="http://app.jd.com/" target="_blank">手机远通</a><b></b>
+			</li>
+			<li class="fore4 ld menu" id="biz-service" data-widget="dropdown" clstag="homepage|keycount|home2013|01e">
+				<s></s>
+				<span class="outline"></span>
+				<span class="blank"></span>
+				客户服务
+				<b></b>
+				<div class="dd">
+					<div><a href="http://help.jd.com/index.html" target="_blank">帮助中心</a></div>
+					<div><a href="http://myjd.jd.com/repair/orderlist.action" target="_blank" rel="nofollow">售后服务</a></div>
+					<div><a href="http://chat.jd.com/jdchat/custom.action" target="_blank" rel="nofollow">在线客服</a></div>
+					<div><a href="http://myjd.jd.com/opinion/list.action" target="_blank" rel="nofollow">投诉中心</a></div>
+					<div><a href="http://www.jd.com/contact/service.html" target="_blank">客服邮箱</a></div>
+				</div>
+			</li>
+			<li class="fore5 ld menu" id="site-nav" data-widget="dropdown" clstag="homepage|keycount|home2013|01f">
+				<s></s>
+				<span class="outline"></span>
+				<span class="blank"></span>
+				网站导航
+				<b></b>
+				<div class="dd lh">
+					<dl class="item fore1">
+						<dt>特色栏目</dt>
+						<dd>
+							<div><a target="_blank" href="http://mobile.jd.com/index.do">远通通信</a></div>
+							<div><a target="_blank" href="http://jdstar.jd.com/">校园之星</a></div>
+							<div><a target="_blank" href="http://my.jd.com/personal/guess.html">为我推荐</a></div>
+							<div><a target="_blank" href="http://shipingou.jd.com/">视频购物</a></div>
+							<div><a target="_blank" href="http://club.jd.com/">远通社区</a></div>
+							<div><a target="_blank" href="http://read.jd.com/">在线读书</a></div>
+							<div><a target="_blank" href="http://diy.jd.com/">装机大师</a></div>
+							<div><a target="_blank" href="http://giftcard.jd.com/market/index.action">远通E卡</a></div>
+							<div><a target="_blank" href="http://channel.jd.com/jiazhuang.html">家装城</a></div>
+							<div><a target="_blank" href="http://dapeigou.jd.com/">搭配购</a></div>
+							<div><a target="_blank" href="http://xihuan.jd.com/">我喜欢</a></div>
+						</dd>
+					</dl>
+					<dl class="item fore2">
+						<dt>企业服务</dt>
+						<dd>
+							<div><a target="_blank" href="http://giftcard.jd.com/company/index">企业客户</a></div>
+							<div><a target="_blank" href="http://sale.jd.com/p10997.html">办公直通车</a></div>
+						</dd>
+					</dl>
+					<dl class="item fore3">
+						<dt>旗下网站</dt>
+						<dd>
+							<div><a target="_blank" href="http://en.jd.com/">English Site</a></div>
+						</dd>
+					</dl>
+				</div>
+			</li>
+		</ul>
+		<span class="clr"></span>
+	</div>
+</div>
+<form id="orderForm" class="hide" action="/order/create.html" method="post">
+		<input type="hidden" name="paymentType" value="1"/>
+		<c:forEach items="${cartList }" var="cart" varStatus="status">
+			<c:set var="totalPrice"  value="${ totalPrice + (cart.price * cart.num)}"/>
+			<input type="hidden" name="orderItems[${status.index}].itemId" value="${cart.id}"/>
+			<input type="hidden" name="orderItems[${status.index}].num" value="${cart.num }"/>
+			<input type="hidden" name="orderItems[${status.index}].price" value="${cart.price}"/>
+			<input type="hidden" name="orderItems[${status.index}].totalFee" value="${cart.price * cart.num}"/>
+			<input type="hidden" name="orderItems[${status.index}].title" value="${cart.title}"/>
+			<input type="hidden" name="orderItems[${status.index}].picPath" value="${cart.images[0]}"/>
+		</c:forEach>
+		<input type="hidden" name="payment" value="<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${totalPrice/100 }"/>"/>
+		<input type="hidden" name="orderShipping.receiverName" value="入云龙"/>
+		<input type="hidden" name="orderShipping.receiverMobile" value="15891588888"/>
+		<input type="hidden" name="orderShipping.receiverState" value="北京"/>
+		<input type="hidden" name="orderShipping.receiverCity" value="北京"/>
+		<input type="hidden" name="orderShipping.receiverDistrict" value="昌平区"/>
+		<input type="hidden" name="orderShipping.receiverAddress" value="西三旗 xxxxxxxxx"/>
+</form>
+
+<!-- main -->
+<div id="container">
+	<div id="content" class="w">
+		<div class="m">
+			<div class="mt">
+				<h2>填写并核对订单信息</h2>
+			</div>
+			<div class="mc">
+				<div class="checkout-steps">
+<!--  /widget/consignee-step/consignee-step.tpl -->
+<div class="step-tit">
+	<h3>收货人信息</h3>
+	<div class="extra-r">
+		<a href="#none" class="ftx-05" onclick="use_NewConsignee()">新增收货地址</a>
+	</div>
+</div>
+<div class="step-cont">
+	<div class="consignee-list" id="consignee-list1">
+		<a href="#none" id="prev" class="prev arrow-btns"></a>
+		<a href="#none" id="next" class="next arrow-btns"></a>
+		<div id="consignee1" class="list-cont ui-switchable-body">
+            <div id="consignee-ret"></div>
+   			<ul class="ui-switchable-panel-main" id="consignee-list">
+				<!---->
+				<li class="ui-switchable-panel" id="consignee_index_137617472"
+					selected="selected" style="cursor: pointer;">
+					<div class="consignee-item item-selected"
+						consigneeId="137617472" id="consignee_index_div_137617472">
+						<b></b>
+						<div class="user-name">
+							<div class="fl">
+								<strong limit="4">入云龙</strong>&nbsp;&nbsp;收
+							</div>
+							<div class="fr">158****8888</div>
+							<div class="clr"></div>
+						</div>
+						<div class="mt10" limit="15">北京 昌平区 五环外六环里</div>
+						<div class="adr-m" limit="30">西三旗 xxxxxxxxx</div>
+						<div class="op-btns ar">
+							<a href="#none"
+								class="ftx-05 mr10 setdefault-consignee hide"
+								fid="137617472">设为默认地址</a> <a href="#none"
+								class="ftx-05 mr10 edit-consignee" fid="137617472">编辑</a>
+							<a href="#none" class="ftx-05 del-consignee hide"
+								fid="137617472">删除</a>
+						</div>
+					</div>
+				</li>
+				<!---->
+			</ul>
+		</div>
+	</div>
+</div>
+<!--/ /widget/consignee-step/consignee-step.tpl -->
+	
+<!--/ /widget/shopping-list/shopping-list.tpl -->
+<div id="shipAndSkuInfo">
+  <div id="payShipAndSkuInfo">
+    <div class="step-tit">
+	<h3>支付方式</h3>
+</div>
+<div class="step-cont">
+	<div class="payment-list" id="">
+		<div class="list-cont">
+			<ul id="payment-list">
+				<input type="hidden" id="instalmentPlan" value="false">
+				<li style="cursor: pointer;" onclick="save_Pay(1);">
+					<div class="payment-item item-selected online-payment "
+						for="pay-method-1" payname="货到付款" payid="1">
+						<b></b> 货到付款<span class="qmark-icon qmark-tip"
+							data-tips="送货上门后再收款，支持现金、POS机刷卡、支票支付 <a href='http://help.jd.com/help/distribution-768-2-2813-2863-0-1410707152669.html' target='_blank' class='ftx-05'>查看服务及配送范围</a>"></span>
+						<!--  span class="qmark-icon qmark-tip" data-tips="在线支付，支持绝大多数银行借记卡及部分银行信用卡 <a href='http://help.jd.com/help/question-68.html' target='_blank' class='ftx-05'>查看银行及限额</a>"></span -->
+						<!-- span class="qmark-icon qmark-tip" data-tips="送货上门后再收款，支持现金、POS机刷卡、支票支付 <a target='_blank' href='http://psfw.jd.com/help/distribution-768.html-2-2825-2893-0-1427094595258.html'>查看服务及配送范围</a>"></span -->
+					</div>
+				</li>
+				<li style="cursor: pointer;" onclick="save_Pay(4);">
+
+					<div class="payment-item  online-payment "
+						for="pay-method-4" payname="在线支付" payid="4">
+						<b></b> 在线支付 <font class="whiteBarSpanClass hide"
+							color="#FF6600">[支持打白条]</font> <span
+							class="qmark-icon qmark-tip"
+							data-tips="即时到帐，支持绝大数银行借记卡及部分银行信用卡 <a href='http://www.jd.com/help/onlinepay.aspx' target='_blank' class='ftx-05'> 查看银行及限额</a>"></span>
+						<!--  span class="qmark-icon qmark-tip" data-tips="在线支付，支持绝大多数银行借记卡及部分银行信用卡 <a href='http://help.jd.com/help/question-68.html' target='_blank' class='ftx-05'>查看银行及限额</a>"></span -->
+						<!-- span class="qmark-icon qmark-tip" data-tips="即时到帐，支持绝大数银行借记卡及部分银行信用卡 <a target='_blank' href='http://www.jd.com/help/onlinepay.aspx'>查看银行及限额</a>"></span -->
+					</div>
+				</li>
+
+				<li style="cursor: pointer;" onclick="save_Pay(5); ">
+
+					<div class="payment-item online-payment "
+						for="pay-method-5" payname="公司转账" payid="5">
+						<b></b> 公司转账 <span class="qmark-icon qmark-tip"
+							data-tips="通过快钱平台转账 转帐后1-3个工作日内到帐 <a href='http://help.jd.com/help/question-70.html' target='_blank' class='ftx-05'>查看帐户信息</a>"></span>
+						<!--  span class="qmark-icon qmark-tip" data-tips="在线支付，支持绝大多数银行借记卡及部分银行信用卡 <a href='http://help.jd.com/help/question-68.html' target='_blank' class='ftx-05'>查看银行及限额</a>"></span -->
+						<!-- span class="qmark-icon qmark-tip" data-tips="通过快钱平台转账 转帐后1-3个工作日内到帐 <a target='_blank' href='http://help.jd.com/help/question-70.html'>查看帐户信息</a>"></span -->
+					</div>
+				</li>
+				<li style="cursor: pointer;" onclick="save_Pay(2); ">
+
+					<div class="payment-item  online-payment "
+						for="pay-method-2" payname="邮局汇款" payid="2">
+						<b></b> 邮局汇款 <span class="qmark-icon qmark-tip"
+							data-tips="通过快钱平台收款 汇款后1-3个工作日到账 <a href='http://help.jd.com/help/question-69.html' target='_blank' class='ftx-05'>查看帮助</a>"></span>
+						<!--  span class="qmark-icon qmark-tip" data-tips="在线支付，支持绝大多数银行借记卡及部分银行信用卡 <a href='http://help.jd.com/help/question-68.html' target='_blank' class='ftx-05'>查看银行及限额</a>"></span -->
+						<!-- span class="qmark-icon qmark-tip" data-tips="通过快钱平台收款  汇款后1-3个工作日到账 <a target='_blank' href='http://help.jd.com/help/question-69.html'>查看帮助</a>"></span -->
+					</div>
+				</li> 
+				<!--div id="shipment"></div--> 
+				<script>
+					$('.online-payment').hover(function() {
+						$(this).addClass('payment-item-hover');
+					}, function() {
+						$(this).removeClass('payment-item-hover');
+					});
+				</script>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--/ /widget/payment-step/payment-step.tpl -->
+<div class="step-tit">
+	<h3>送货清单</h3>
+	<div class="extra-r">
+					<a href="/cart/show.html" id="cartRetureUrl" class="return-edit ftx-05">返回修改购物车</a>
+			</div>
+</div>
+<div class="step-cont" id="skuPayAndShipment-cont">
+	<!--添加商品清单  zhuqingjie -->
+<div class="shopping-lists" id="shopping-lists"> 
+<div class="shopping-list ABTest">
+	<div class="goods-list">
+     <!--配送方式-->
+    <h4 class="vendor_name_h" id="0">商家：远通商城</h4>		         
+    <div class="goods-suit goods-last">
+	 <c:forEach items="${cartList }" var="cart">
+		<div class="goods-item goods-item-extra">
+
+			<div class="p-img">
+				<a target="_blank" href="/item/${cart.id}.html">
+					<img src="${cart.images[0]}" alt="">
+				</a>
+			</div>
+			<div class="goods-msg">
+				<div class="p-name">
+					<a href="/item/${cart.id}.html" target="_blank">
+						
+					</a>
+				</div>
+				<div class="p-price">
+					<!--增加预售金额显示 begin   预售分阶段支付类型（1：一阶梯全款支付；2：一阶梯定金支付(全款或定金可选)；3：三阶梯仅定金支付） -->
+					<strong>￥<fmt:formatNumber
+							groupingUsed="false" maxFractionDigits="2"
+							minFractionDigits="2" value="${cart.price / 100 }" /></strong>
+					<!--增加预售金额显示 end-->
+					<span class="ml20">  </span> 
+					<span class="ml20 p-inventory" skuId="11555193">有货</span>
+				</div>
+				<i class="p-icon p-icon-w"></i><span class="ftx-04">7天无理由退货</span>
+			</div>
+			<div class="clr"></div>
+		</div>
+	</c:forEach>
+	</div>                   
+</div>
+<!--goods-list 结束-->
+<div class="dis-modes">
+	<!--配送方式-->
+	<div class="mode-item mode-tab">
+		<h4>
+			配送方式：（<a id="jd-goods-item" class="ftx-05 alink"
+				href="#none">对应商品</a>）
+		</h4>
+		<div class="mode-tab-nav">
+			<ul>
+				<li class="mode-tab-item " id="jd_shipment_item"
+					onclick="doSwithTab('pay')"><span
+					id="jdShip-span-tip" class="m-txt">远通快递<i
+						class='qmark-icon qmark-tip'
+						data-tips='由远通公司负责配送，速度很快，还接受上门刷卡付款服务'></i></span><b></b></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--dis-modes 结束-->
+<div class="clr"></div>
+<div class="freight-cont">
+	<strong class="ftx-01" style="color: #666"
+			freightByVenderId="0" popJdShipment="false">免运费</strong>
+</div>
+</div>	
+				
+</div>
+</div>  
+</div>
+</div>			
+<!--  /widget/invoice-step/invoice-step.tpl -->
+<div class="step-tit">
+	<h3>发票信息</h3>
+</div>
+<div class="step-content">
+	<div id="part-inv" class="invoice-cont">
+		<span class="mr10"> 普通发票（电子） &nbsp; </span><span class="mr10">
+			个人 &nbsp; </span><span class="mr10"> &nbsp; </span> 明细 <a href="#none"
+			class="ftx-05 invoice-edit" onclick="edit_Invoice()">修改</a>
+	</div>
+</div>
+		<div class="order-summary">
+			<!--  预售 计算支付展现方式 begin -->
+			<div class="statistic fr">
+				<div class="list">
+					<span>
+						总商品金额：
+					</span> 
+					<em class="price" id="warePriceId">¥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></em>
+				</div>
+				<div class="list">
+					<span>运费：</span> <em class="price" id="freightPriceId">
+						￥0.00</em>
+				</div>
+				<div class="list">
+					<span>应付总额：</span> <em class="price" id="sumPayPriceId">
+						￥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></em>
+				</div>
+			</div>
+			<div class="clr"></div>
+		</div>
+	</div>
+</div>
+<!--/ /widget/order-summary/order-summary.tpl -->
+					
+<!--  /widget/checkout-floatbar/checkout-floatbar.tpl -->
+<div class="trade-foot">
+  <div id="checkout-floatbar" class="group">
+    <div class="ui-ceilinglamp checkout-buttons">
+      <div class="sticky-placeholder hide" style="display: none;">
+      </div>
+      <div class="sticky-wrap">
+      	<div class="inner">
+          <button type="submit" class="checkout-submit btn-1" 
+          		  id="order-submit"	onclick="submit()">
+          	提交订单
+          </button>
+                    <span class="total">应付总额：<strong id="payPriceId">￥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></strong>
+          </span>
+                    <span id="checkCodeDiv"></span>
+          <div class="checkout-submit-tip" id="changeAreaAndPrice" style="display: none;">
+            由于价格可能发生变化，请核对后再提交订单
+          </div>
+          <div style="display:none" id="factoryShipCodShowDivBottom" class="dispatching">
+            部分商品货到付款方式：先由远通配送“提货单”并收款，然后厂商发货。
+          </div>
+        </div>
+        <span id="submit_message" style="display:none" class="submit-error" ></span>
+		  	<div class="submit-check-info" id="submit_check_info_message" style="display:none"></div>
+    	</div>
+    </div>
+  </div>
+  
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div id="footer-2013">
+	<div class="links"><a href="http://www.jd.com/intro/about.aspx" target="_blank" rel="nofollow">关于我们</a>|<a href="http://www.jd.com/contact/" target="_blank" rel="nofollow">联系我们</a>|<a href="http://zhaopin.jd.com/" target="_blank" rel="nofollow">人才招聘</a>|<a href="http://www.jd.com/contact/joinin.aspx" target="_blank" rel="nofollow">商家入驻</a>|<a href="http://jzt.jd.com" target="_blank" rel="nofollow">营销中心</a>|<a href="http://app.jd.com/" target="_blank" rel="nofollow">手机远通</a>|<a href="http://club.jd.com/links.aspx" target="_blank">友情链接</a>|<a href="http://media.jd.com/" target="_blank">销售联盟</a>|<a target="_blank" href="http://club.jd.com/">远通社区</a>|<a target="_blank" href="http://gongyi.jd.com">远通公益</a>|<a target="_blank" href="http://en.jd.com/">English Site</a></div>
+</div>
+<div class="w" clstag="homepage|keycount|home2013|37a">
+	<div id="service-2013">
+		<dl class="fore1">
+			<dt><b></b><strong>购物指南</strong></dt>
+			<dd>
+				<div><a href="http://help.jd.com/help/question-56.html" target="_blank" rel="nofollow">购物流程</a></div>
+				<div><a href="http://help.jd.com/help/question-57.html" target="_blank" rel="nofollow">会员介绍</a></div>
+				<div><a href="http://help.jd.com/help/question-181.html" target="_blank" rel="nofollow">团购/机票</a></div>
+				<div><a href="http://help.jd.com/help/question-61.html" target="_blank" rel="nofollow">常见问题</a></div>
+				<div><a href="http://help.jd.com/help/question-63.html" target="_blank" rel="nofollow">大家电</a></div>
+				<div><a href="http://help.jd.com/index.html" target="_blank" rel="nofollow">联系客服</a></div>
+			</dd>
+		</dl>
+		<dl class="fore2">		
+			<dt><b></b><strong>配送方式</strong></dt>
+			<dd>
+				<div><a href="http://help.jd.com/help/question-64.html" target="_blank" rel="nofollow">上门自提</a></div>
+				<div><a href="http://help.jd.com/help/question-360.html" target="_blank" rel="nofollow">211限时达</a></div>
+				<div><a href="http://help.jd.com/help/distribution-768.html" target="_blank" rel="nofollow">配送服务查询</a></div>
+				<div><a href="http://help.jd.com/help/question-892.html#help2215" target="_blank" rel="nofollow">配送费收取标准</a></div>
+				<div><a href="http://market.jd.com/giftcard/index.html#one5" target="_blank" rel="nofollow">如何送礼</a></div>
+				<div><a href="http://en.jd.com/chinese.html" target="_blank">海外配送</a></div>
+			</dd>
+		</dl>
+		<dl class="fore3">
+			<dt><b></b><strong>支付方式</strong></dt>
+			<dd>
+				<div><a href="http://help.jd.com/help/question-67.html" target="_blank" rel="nofollow">货到付款</a></div>
+				<div><a href="http://help.jd.com/help/question-68.html" target="_blank" rel="nofollow">在线支付</a></div>
+				<div><a href="http://help.jd.com/help/question-71.html" target="_blank" rel="nofollow">分期付款</a></div>
+				<div><a href="http://help.jd.com/help/question-69.html" target="_blank" rel="nofollow">邮局汇款</a></div>
+				<div><a href="http://help.jd.com/help/question-70.html" target="_blank" rel="nofollow">公司转账</a></div>
+			</dd>
+		</dl>
+		<dl class="fore4">		
+			<dt><b></b><strong>售后服务</strong></dt>
+			<dd>
+				<div><a href="http://myjd.jd.com/afs/help/afshelp.action" target="_blank" rel="nofollow">售后政策</a></div>
+				<div><a href="http://help.jd.com/help/question-99.html" target="_blank" rel="nofollow">价格保护</a></div>
+				<div><a href="http://help.jd.com/help/question-100.html" target="_blank" rel="nofollow">退款说明</a></div>
+				<div><a href="http://myjd.jd.com/repair/repairs.action" target="_blank" rel="nofollow">返修/退换货</a></div>
+				<div><a href="http://help.jd.com/help/question-881.html" target="_blank" rel="nofollow">取消订单</a></div>
+			</dd>
+		</dl>
+		<dl class="fore5">
+			<dt><b></b><strong>特色服务</strong></dt>
+			<dd>		
+				<div><a href="http://help.jd.com/help/question-79.html" target="_blank">夺宝岛</a></div>
+				<div><a href="http://help.jd.com/help/question-86.html" target="_blank">DIY装机</a></div>
+				<div><a href="http://fuwu.jd.com/" target="_blank" rel="nofollow">延保服务</a></div>
+				<div><a href="http://giftcard.jd.com/market/index.action" target="_blank" rel="nofollow">远通E卡</a></div>
+				<div><a href="http://help.jd.com/help/question-91.html" target="_blank" rel="nofollow">节能补贴</a></div>
+				<div><a href="http://mobile.jd.com/" target="_blank" rel="nofollow">远通通信</a></div>
+			</dd>
+		</dl>
+		<div class="fr">
+			<div class="sm" id="branch-office">
+				<div class="smt">
+					<h3>远通信德自营覆盖区县</h3>
+				</div>
+				<div class="smc">
+					<p>远通信德已向全国1859个区县提供自营配送服务，支持货到付款、POS机刷卡和售后上门服务。</p>
+					<p class="ar"><a href="http://help.jd.com/help/distribution-768.html" target="_blank">查看详情&nbsp;></a></p>
+				</div>
+			</div>
+		</div>
+		<span class="clr"></span>
+	</div>
+</div>
+<div class="w" clstag="homepage|keycount|home2013|38a">
+	<jsp:include page="footer-links.jsp"></jsp:include>
+</div>
+<!-- /main -->
+	<jsp:include page="commons/footer.jsp" />
+	</body>
+</html>

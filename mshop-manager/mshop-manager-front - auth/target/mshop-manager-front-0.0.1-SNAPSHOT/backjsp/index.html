@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>管理</title>
+<link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css" />
+<link rel="stylesheet" type="text/css" href="css/taotao.css" />
+<script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<body class="easyui-layout">
+    <div data-options="region:'west',title:'菜单',split:true" style="width:300px;">
+    	<ul id="menu" class="easyui-tree" style="margin-top: 10px;margin-left: 5px;">
+         	<li>
+         		<span>商品管理</span>
+         		
+         	</li>
+         </ul>
+    </div>
+    <div data-options="region:'center',title:''">
+    	<div id="cityTable" class="easyui-tabs">
+		    <div title="首页" style="padding:20px;">
+		        	
+		    </div>
+		</div>
+    </div>
+<script type="text/javascript">
+	$(function() {
+		$("#cityTable").datagrid(
+						{
+							
+							//表格的标题
+							//title：显示的文字
+							//field：属性名
+							pageSize:30,
+							pageList:[5,10,15,20,25,30,35],
+							pagination:true,
+							rownumbers:true,
+							title:'首页',
+							columns : [ [{
+								field : 'id',
+								title : '商品id',
+								width : 100
+							},  {
+								field : 'title',
+								title : '商品标题',
+								width : 400
+							}, {
+								field : 'price',
+								title : '价格',
+								width : 100,
+								
+							}, {
+								field : 'num',
+								title : '库存数量',
+								width : 100,
+								
+							} , {
+								field : 'barcode',
+								title : '条形码',
+								width : 100,
+								
+							}, {
+								field : 'created',
+								title : '创建日期',
+								width : 100,
+								
+							},{
+								field : 'status',
+								title : '状态',
+								width : 100,
+							
+							}] ],
+							//异步获得数据的url
+							url : "/goods/list",
+
+							//使用此函数可以改变获得的数据的格式
+
+							
+							//单行选中
+							singleSelect : true,
+							//行号
+							rownumbers : true,
+							toolbar : [
+									{
+										text : '添加',
+										iconCls : 'icon-add',
+										handler : function() {
+
+											$("#cityinsetr").show();
+											$("#cityupdate").hide();
+											$("#form").dialog("open");
+											$("#cityinsetr").unbind();
+											insert();
+										}
+									},
+									'-',
+									{
+										text : '修改',
+										iconCls : 'icon-edit',
+										handler : function() {
+
+											$("#cityinsetr").hide();
+											$("#cityupdate").show();
+											var row = $("#cityTable").datagrid(
+													"getSelected");
+
+											if (row) {
+												$("#form").dialog("open");
+												$("#id").textbox(
+														"setValue", row.id);
+												$("#title").textbox(
+														"setValue", row.title);
+												$("#price").textbox(
+														"setValue", row.price);
+												$("#num").textbox(
+														"setValue", row.num);
+												$("#barcode").textbox(
+														"setValue", row.barcode);
+											
+												$("#cityupdate").click(
+														function() {
+															update();
+														});
+
+											} else {
+												$.messager
+														.alert('警告',
+																'请选择要修改的数据',
+																'question');
+											}
+										}
+									},
+									'-',
+									{
+										text : '删除',
+										iconCls : 'icon-cancel',
+										handler : function() {
+											var row = $("#cityTable").datagrid("getSelected");
+											//alert(row.id);
+											if (row) {
+												$.messager
+														.confirm(
+																'警告',
+																'确定要删除吗?',
+																function(r) {
+																	if (r) {
+																		
+																				
+																		$.ajax({
+
+																					type : "post",
+																					url : "/goods/delete",
+																					data : {
+
+																						"id" : row.id
+																					},
+																					success : function(
+																							result) {
+																						
+																						if (result== 1) {
+																							$("#form").dialog("close");
+																							$("#cityTable").datagrid("reload");
+																							$.messager
+																							.alert('提示',
+																									'删除成功',
+																									'question');
+																							
+																							} else {
+																							$.messager
+																							.alert('提示',
+																									'删除失败',
+																									'question');
+																						}
+
+																					}
+																				});
+																		
+
+																	}
+																});
+											} else {
+												$.messager
+														.alert('警告',
+																'请选择要删除的数据',
+																'question');
+											}
+										}
+									} ]
+						});
+
+		$("#cityinsetr").blur(function() {
+
+		});
+
+		var update = function() {
+			var id = $("#id").val();
+			var title = $("#title").val();
+			
+			var price = $("#price").val();
+			var num = $("#num").val();
+			var barcode = $("#barcode").val();
+			$("#cityinsetr").unbind();
+			$.ajax({
+				type : "post",
+				url : "/goods/updateOne",
+				data : {
+					"id" : id,
+					"title" : title,
+					"price" : price,
+					
+					"num" : num,
+					"barcode" : barcode
+
+				},
+				success : function(result) {
+					if (result == 1) {
+						$.messager
+						.alert('提示',
+								'修改成功',
+								'question');
+						$("#id").textbox(
+								"setValue", "");
+						$("#title").textbox(
+								"setValue", "");
+					
+						$("#price").textbox(
+								"setValue", "");
+						$("#num").textbox(
+								"setValue", "");
+						$("#barcode").textbox(
+								"setValue", "");
+						$("#form").dialog("close");
+						$("#cityTable").datagrid("reload");
+						
+					} else {
+						$.messager
+						.alert('提示',
+								'修改失败',
+								'question');
+						
+					}
+
+				},
+			});
+
+		};
+		var insert = function() {
+			$("#cityinsetr").click(function() {
+				
+				var title = $("#title").val();
+				var price = $("#price").val();
+				var num = $("#num").val();
+				var barcode = $("#barcode").val();
+				$.ajax({
+					type : "post",
+					url : "/goods/insertOne",
+					data : {
+						"title" : title,
+						"price" : price,
+						
+						"num" : num,
+						"barcode" : barcode
+					},
+					success : function(result) {
+						if (result== 1) {
+							$.messager
+							.alert('提示',
+									'增加成功',
+									'question');
+							$("#id").textbox(
+									"setValue", "");
+							$("#title").textbox(
+									"setValue", "");
+						
+							$("#price").textbox(
+									"setValue", "");
+							$("#num").textbox(
+									"setValue", "");
+							$("#barcode").textbox(
+									"setValue", "");
+						
+							
+							$("#form").dialog("close");
+							$("#cityTable").datagrid("reload");
+						} else {
+							$.messager
+							.alert('提示',
+									'增加失败',
+									'question');
+							
+						}
+
+					},
+				});
+
+			});
+		};
+		$("#cancel").click(function() {
+			//$("#cityname").text("");
+			//$("#cityname").textbox("");
+			$("#form").dialog("close");
+		});
+
+	});
+</script>
+</head>
+<body>
+	
+	<table id="cityTable"></table>
+	<div id="form" class="easyui-dialog" title="管理"
+		style="width:700px;height:500px;"
+		data-options="iconCls:'icon-save',modal:true,closed:true"
+		buttons="#dlg-buttons">
+		<table align="center">
+		<tr><td><input class="easyui-textbox" type="hidden" name="id" id='id' data-options="" ></input></td></tr>
+	        <tr>
+	            <td>商品标题:</td>
+	            <td><input class="easyui-textbox" type="text" name="title" id='title' data-options="validType:'length[1,30]',required:true" ></input></td>
+	        </tr>
+	       
+	        <tr>
+	            <td>商品价格:</td>
+	            <td>
+	            	<input class="easyui-numberbox" type="text" name="price" id='price'  data-options="min:1,max:99999999,precision:0,required:true" />
+	            </td>
+	        </tr>
+	        <tr>
+	            <td>库存数量:</td>
+	            <td><input class="easyui-numberbox" type="text" name="num" id='num' data-options="min:1,max:99999999,precision:0,required:true" /></td>
+	        </tr>
+	        <tr>
+	            <td>条形码:</td>
+	            <td>
+	                <input class="easyui-textbox" type="text" name="barcode" id='barcode' data-options="validType:'length[1,30]'" />
+	            </td>
+	        </tr>
+	        
+		</table>
+
+	</div>
+	<div id="dlg-buttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton"
+			iconCls="icon-ok" id="cityinsetr" style="width:90px">确定</a>
+			
+			<a href="javascript:void(0)" class="easyui-linkbutton"
+			iconCls="icon-ok" id="cityupdate"  style="width:90px;display: none">确定</a>
+			
+			 <a href="javascript:void(0)" class="easyui-linkbutton"
+			iconCls="icon-cancel" id="cancel" style="width:90px">取消</a>
+	</div>
+</body>
+</html>
+
